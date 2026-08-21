@@ -14,7 +14,7 @@ Gem::Specification::new do |s|
   s.license     =   JekyllIS::Hookdown::Info::LICENSE
   s.files       = Dir[ 'lib/**/*', 'README.md', 'LICENSE' ]
 
-  s.required_ruby_version = '~> 3.4'
+  s.required_ruby_version = '>= 3.4'
 
   s.add_dependency 'jekyll',   '~> 4.4'
   s.add_dependency 'kramdown', '~> 2.5'

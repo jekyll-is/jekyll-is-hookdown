@@ -49,7 +49,7 @@ module JekyllIS::Hookdown
           # do nothing
         when :delete
           element = nil
-          parent.children.delete_at index if parent && index
+          parent.children[index] = element if parent && parent.children && index
           break
         else
           Jekyll::logger.error JekyllIS::Hookdown::Info::NAME, "Invalid hook response: #{ result.inspect }"
@@ -59,6 +59,7 @@ module JekyllIS::Hookdown
         element.children.each_with_index do |child, idx|
           process_element page, kind, collection, child, parent: element, index: idx
         end
+        element.children.compact!
       end
       element
     end
@@ -76,7 +77,7 @@ module JekyllIS::Hookdown
             nil
           end
           collection = if page.respond_to?(:collection)
-            page.collection&.to_sym
+            page.collection&.label&.to_sym
           else
             nil
           end
