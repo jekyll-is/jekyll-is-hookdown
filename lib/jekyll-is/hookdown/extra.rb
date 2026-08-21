@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+require 'set'
 require 'kramdown'
 
 require_relative 'jekyll_patch'
@@ -11,8 +12,9 @@ module JekyllIS::Hookdown
     def register_element_hook owner, *elements, priority: Jekyll::Hooks::DEFAULT_PRIORITY, &block
       if enabled?
         priority = Jekyll::Hooks::priority_value(priority)
+        owners = owner.is_a?(Enumerable) ? owner.to_set : Set[ owner ]
         setup_element_hooks
-        obj = { priority: priority, block: block, owner: owner, elements: elements }
+        obj = { priority: priority, block: block, owners: owners, elements: elements.to_set }
         idx = @hooks.find_index { priority <= it[:priority] }
         if idx
           @hooks.insert idx, obj
@@ -33,9 +35,10 @@ module JekyllIS::Hookdown
 
     private
 
-    def process_element page, element, parent: nil, index: nil
+    def process_element page, kind, collection, element, parent: nil, index: nil
       @hooks.reverse_each do |obj|
         next unless obj[:elements].include?(element.type)
+        next unless obj[:owners].include?(kind) || obj[:owners].include?(collection)
         block = obj[:block]
         result = block.call page, element
         case result
@@ -54,17 +57,30 @@ module JekyllIS::Hookdown
       end
       if element && element.children
         element.children.each_with_index do |child, idx|
-          process_element page, child, parent: element, index: idx
+          process_element page, kind, collection, child, parent: element, index: idx
         end
       end
       element
     end
 
-    def setup_element_hooks owner
+    def setup_element_hooks
       unless @hooks
         @hooks = []
-        Jekyll::Hooks.register owner, :post_parse do |page, document|
-          process_element page, document.root
+        Jekyll::Hooks.register [ :pages, :documents ], :post_parse do |page, document|
+          kind = case page
+          when Jekyll::Page
+            :pages
+          when Jekyll::Document
+            :documents
+          else
+            nil
+          end
+          collection = if page.respond_to?(:collection)
+            page.collection&.to_sym
+          else
+            nil
+          end
+          process_element page, kind, collection, document.root
         end
       end
     end
