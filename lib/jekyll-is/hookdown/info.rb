@@ -13,6 +13,6 @@ module JekyllIS::Hookdown::Info
   AUTHOR   = 'Ivan Shikhalev'
   EMAIL    = 'shikhalev@gmail.com'
   HOMEPAGE = 'https://github.com/jekyll-is/jekyll-is-hookdown'
-  PATH     = File.expand_path '../../../..', __FILE__
+  PATH     =  File.expand_path '../../../..', __FILE__
 
 end
