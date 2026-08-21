@@ -2,3 +2,4 @@
 
 require_relative 'hookdown/jekyll_patch'
 require_relative 'hookdown/converter'
+require_relative 'hookdown/extra'

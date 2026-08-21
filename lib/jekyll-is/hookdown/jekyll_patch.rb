@@ -23,11 +23,15 @@ module JekyllIS::Hookdown
       Thread::current[:hookdown_current_page] = value
     end
 
+    def enabled?
+      Jekyll::configuration['markdown'] == 'Hookdown'
+    end
+
   end
 
 end
 
-if Jekyll::configuration['markdown'] == 'Hookdown'
+if JekyllIS::Hookdown::enabled?
 
   JekyllIS::Hookdown::apply_patch
 
