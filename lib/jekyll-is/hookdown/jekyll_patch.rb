@@ -35,11 +35,11 @@ if JekyllIS::Hookdown::enabled?
 
   JekyllIS::Hookdown::apply_patch
 
-  Jekyll::Hooks::register [ :pages, :posts, :documents ], :pre_render do |page|
+  Jekyll::Hooks::register [ :pages, :documents ], :pre_render do |page|
     JekyllIS::Hookdown::current_page = page
   end
 
-  Jekyll::Hooks::register [ :pages, :posts, :documents ], :post_render do |page|
+  Jekyll::Hooks::register [ :pages, :documents ], :post_render do |page|
     if JekyllIS::Hookdown::current_page == page
       JekyllIS::Hookdown::current_page = nil
     else

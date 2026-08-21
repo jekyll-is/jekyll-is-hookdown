@@ -7,7 +7,7 @@ module JekyllIS::Hookdown; end
 module JekyllIS::Hookdown::Info
 
   NAME     = 'jekyll-is-hookdown'
-  VERSION  = '0.8.0'
+  VERSION  = '0.8.0.2'
   SUMMARY  = 'Hooked Kramdown for Jekyll'
   LICENSE  = 'LGPL-3.0-or-later'
   AUTHOR   = 'Ivan Shikhalev'
