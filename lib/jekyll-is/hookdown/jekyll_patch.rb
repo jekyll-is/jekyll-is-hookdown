@@ -27,15 +27,20 @@ module JekyllIS::Hookdown
 
 end
 
-JekyllIS::Hookdown::apply_patch
+if Jekyll::configuration['markdown'] == 'Hookdown'
 
-Jekyll::Hooks::register [ :pages, :posts, :documents ], :pre_render do |page|
-  JekyllIS::Hookdown::current_page = page
-end
-Jekyll::Hooks::register [ :pages, :posts, :documents ], :post_render do |page|
-  if JekyllIS::Hookdown::current_page == page
-    JekyllIS::Hookdown::current_page = nil
-  else
-    Jekyll::logger.warn JekyllIS::Hookdown::Info::NAME, "Mismatch pages: #{ page.inspect } vs #{ JekyllIS::Hookdown::current_page.inspect }"
+  JekyllIS::Hookdown::apply_patch
+
+  Jekyll::Hooks::register [ :pages, :posts, :documents ], :pre_render do |page|
+    JekyllIS::Hookdown::current_page = page
   end
+
+  Jekyll::Hooks::register [ :pages, :posts, :documents ], :post_render do |page|
+    if JekyllIS::Hookdown::current_page == page
+      JekyllIS::Hookdown::current_page = nil
+    else
+      Jekyll::logger.warn JekyllIS::Hookdown::Info::NAME, "Mismatch pages: #{ page.inspect } vs #{ JekyllIS::Hookdown::current_page.inspect }"
+    end
+  end
+
 end
