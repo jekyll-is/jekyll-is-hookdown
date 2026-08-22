@@ -12,7 +12,8 @@ Gem::Specification::new do |s|
   s.email       = [ JekyllIS::Hookdown::Info::EMAIL  ]
   s.homepage    =   JekyllIS::Hookdown::Info::HOMEPAGE
   s.license     =   JekyllIS::Hookdown::Info::LICENSE
-  s.files       = Dir[ 'lib/**/*', 'README.md', 'LICENSE' ]
+
+  s.files = Dir[ 'lib/**/*', 'README.md', 'LICENSE' ]
 
   s.required_ruby_version = '>= 3.4'
 
