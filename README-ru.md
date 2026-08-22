@@ -17,14 +17,14 @@
 Однако, в Jekyll есть возможность писать плагины в подкаталоге `_plugins` — чтобы там использовать данный хук, потребуется подключить
 данный гем именно как плагин:
 
-```Gemfile
-group :jekyll_plugins
+```ruby
+group :jekyll_plugins do
   . . .
   gem 'jekyll-is-hookdown', '~> 0.8'
 end
 ```
 
-```_config.yml
+```yaml
 plugins:
   . . .
   - jekyll-is-hookdown
@@ -35,7 +35,7 @@ markdown: Hookdown
 Последняя строчка включает работу плагина. При этом, поскольку конвертер унаследован от стандартного Kramdown, будут работать все расширения
 и настройки в подразделе конфигурации `kramdown` (собственной секции `hookdown` плагин не предусматривает), например:
 
-```_config.yml
+```yaml
 kramdown:
   input: GFM
   hard_wrap: false
