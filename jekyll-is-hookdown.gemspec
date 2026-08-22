@@ -8,8 +8,8 @@ Gem::Specification::new do |s|
   s.version     =   JekyllIS::Hookdown::Info::VERSION
   s.summary     =   JekyllIS::Hookdown::Info::SUMMARY
   s.description =   JekyllIS::Hookdown::Info::SUMMARY + '.'
-  s.authors     = [ JekyllIS::Hookdown::Info::AUTHOR ]
-  s.email       = [ JekyllIS::Hookdown::Info::EMAIL  ]
+  s.authors     = [ JekyllIS::Hookdown::Info::AUTHOR   ]
+  s.email       = [ JekyllIS::Hookdown::Info::EMAIL    ]
   s.homepage    =   JekyllIS::Hookdown::Info::HOMEPAGE
   s.license     =   JekyllIS::Hookdown::Info::LICENSE
 

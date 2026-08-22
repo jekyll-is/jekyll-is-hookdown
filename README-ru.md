@@ -1,4 +1,4 @@
-| **EN** | [ru](README-ru.md) |
+| [en](README.md) | RU |
 |----------|----------|
 
 # jekyll-is-hookdown
@@ -7,5 +7,3 @@
 [![Gem Version](https://badge.fury.io/rb/jekyll-is-hookdown.svg?icon=si%3Arubygems)](https://badge.fury.io/rb/jekyll-is-hookdown)
 [![Ruby](https://github.com/jekyll-is/jekyll-is-hookdown/actions/workflows/ruby.yml/badge.svg)](https://github.com/jekyll-is/jekyll-is-hookdown/actions/workflows/ruby.yml)
 ![Coverage](coverage-badge.svg)
-
-Hooked Kramdown for Jekyll
