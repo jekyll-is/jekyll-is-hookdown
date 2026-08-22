@@ -17,12 +17,16 @@
 Однако, в Jekyll есть возможность писать плагины в подкаталоге `_plugins` — чтобы там использовать данный хук, потребуется подключить
 данный гем именно как плагин:
 
+В `Gemfile`:
+
 ```ruby
 group :jekyll_plugins do
     . . .
   gem 'jekyll-is-hookdown', '~> 0.8'
 end
 ```
+
+В `_config.yml`:
 
 ```yaml
 plugins:
