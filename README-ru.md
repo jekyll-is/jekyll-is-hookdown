@@ -19,14 +19,14 @@
 
 ```ruby
 group :jekyll_plugins do
-  . . .
+    . . .
   gem 'jekyll-is-hookdown', '~> 0.8'
 end
 ```
 
 ```yaml
 plugins:
-  . . .
+    . . .
   - jekyll-is-hookdown
 
 markdown: Hookdown
