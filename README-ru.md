@@ -62,8 +62,8 @@ kramdown:
 ## Использование
 
 Основной хук внедрен в общую систему хуков Jekyll как событие `:post_parse`. Он доступен для объектов `:pages`, `:documents` и `:posts` (нужно
-заметить, что `:documents` _включает в себя_ `:posts`). В обработчик передается объект документа/страницы и объект класса
-[`Kramdown::Document`](https://kramdown.gettalong.org/rdoc/Kramdown/Document.html).
+заметить, что `:documents` _включает в себя_ `:posts`). В обработчик передается объект документа/страницы и объект
+класса [`Kramdown::Document`](https://kramdown.gettalong.org/rdoc/Kramdown/Document.html).
 
 ```ruby
 Jekyll::Hooks::register [ :pages, :documents ], :post_parse do |page, document|
@@ -73,7 +73,7 @@ end
 
 Поскольку чаще всего нужно обрабатывать не весь документ, а определенные теги/элементы, предусмотрен и другой хук, не приводимый к стандартным,
 он регистрируется иначе. В обработчик передается объект документа/страницы и объект
-класса [`Kramdown::Element`](https://kramdown.gettalong.org/rdoc/Kramdown/Element.html).
+класса [`Kramdown::Element`](https://kramdown.gettalong.org/rdoc/Kramdown/Element.html).
 
 ```ruby
 JekyllIS::Hookdown::register_element_hook [ :pages, :documents ], :a, :img do |page, element|
