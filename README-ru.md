@@ -61,7 +61,8 @@ kramdown:
 
 ## Использование
 
-Основной хук внедрен в общую систему хуков Jekyll как событие `:post_parse`. Он доступен для объектов `:pages`, `:documents` и `:posts` (нужно
+Основной хук внедрен в [общую систему хуков Jekyll](https://jekyllrb.com/docs/plugins/hooks/) как событие `:post_parse`. Он доступен
+для объектов `:pages`, `:documents` и `:posts` (нужно
 заметить, что `:documents` _включает в себя_ `:posts`). В обработчик передается объект документа/страницы и объект
 класса [`Kramdown::Document`](https://kramdown.gettalong.org/rdoc/Kramdown/Document.html).
 
