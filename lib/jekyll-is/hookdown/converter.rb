@@ -2,7 +2,7 @@
 
 require 'jekyll'
 
-require_relative 'jekyll_patch'
+require_relative 'setup'
 
 class Jekyll::Converters::Markdown::Hookdown < Jekyll::Converters::Markdown::KramdownParser
 

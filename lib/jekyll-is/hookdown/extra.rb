@@ -3,7 +3,7 @@
 require 'set'
 require 'kramdown'
 
-require_relative 'jekyll_patch'
+require_relative 'setup'
 
 module JekyllIS::Hookdown
 
