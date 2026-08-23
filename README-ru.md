@@ -26,6 +26,12 @@ group :jekyll_plugins do
 end
 ```
 
+Или, если вы не используете Bundler, установить гем командой:
+
+```shell
+gem install jekyll-is-hookdown
+```
+
 В `_config.yml`:
 
 ```yaml
@@ -44,6 +50,14 @@ kramdown:
   input: GFM
   hard_wrap: false
 ```
+
+### Зависимости
+
++ Версия Ruby >= 3.4
+
++ Jekyll ~> 4.4
+
++ Kramdown ~> 2.5
 
 ## Использование
 
