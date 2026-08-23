@@ -110,6 +110,20 @@ end
 
 Проверка этого условия будет работать даже _до_ инициализации сайта.
 
+### Пример
+
+Выставим всем внешним ссылкам `target="_blank"`:
+
+```ruby
+if JekyllIS::Hookdown::enabled?
+  JekyllIS::Hookdown::register_element_hook [ :pages, :documents ], :a do |_, element|
+    href = element.attr['href']
+    element.attr['target'] = '_blank' if href && (href.start_with?('https://') || href.start_with?('http://'))
+    nil
+  end
+end
+```
+
 ## Лицензия
 
 Плагин опубликован под **[GNU Lesser General Public License v3.0](https://www.gnu.org/licenses/lgpl-3.0.html)**. Это означает, что вы можете свободно
