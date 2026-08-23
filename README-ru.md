@@ -120,7 +120,10 @@ end
 if JekyllIS::Hookdown::enabled?
   JekyllIS::Hookdown::register_element_hook [ :pages, :documents ], :a do |_, element|
     href = element.attr['href']
-    element.attr['target'] = '_blank' if href && (href.start_with?('https://') || href.start_with?('http://'))
+    target = element.attr['target']
+    if href && !target && (href.start_with?('https://') || href.start_with?('http://'))
+      element.attr['target'] = '_blank'
+    end
     nil
   end
 end
