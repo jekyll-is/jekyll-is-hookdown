@@ -62,6 +62,9 @@ GEM
     http_parser.rb (0.8.1)
     i18n (1.15.2)
       concurrent-ruby (~> 1.0)
+    is-deep (0.8.0.2)
+    is-module-reset (0.8.0)
+      is-deep (~> 0.8)
     jekyll (4.4.1)
       addressable (~> 2.4)
       base64 (~> 0.2)
@@ -179,6 +182,7 @@ PLATFORMS
   x86_64-linux-musl
 
 DEPENDENCIES
+  is-module-reset (~> 0.8)
   jekyll-is-hookdown!
   rake (~> 13.3)
   rspec (~> 3.13)
@@ -217,6 +221,8 @@ CHECKSUMS
   google-protobuf (4.36.0-x86_64-linux-musl) sha256=d6c510ff9743b3dcde6acdea06512e4e4ecf53246e5c5b689879861e05d4738a
   http_parser.rb (0.8.1) sha256=9ae8df145b39aa5398b2f90090d651c67bd8e2ebfe4507c966579f641e11097a
   i18n (1.15.2) sha256=00f9eb62412fe593b2a65a97daa75300d37abb8f7202ec748e94b6d46a9dd1b5
+  is-deep (0.8.0.2) sha256=7a63b6412387852b3489921bc8c38b296e2d326f4b3ac07ce7e6a9a2ba19fd76
+  is-module-reset (0.8.0) sha256=50f2f27566b165bc5d08c03623ef67f893fcddb183858003d7f0febd3b5238b4
   jekyll (4.4.1) sha256=4c1144d857a5b2b80d45b8cf5138289579a9f8136aadfa6dd684b31fe2bc18c1
   jekyll-is-hookdown (0.8.0.5)
   jekyll-sass-converter (3.1.0) sha256=83925d84f1d134410c11d0c6643b0093e82e3a3cf127e90757a85294a3862443
