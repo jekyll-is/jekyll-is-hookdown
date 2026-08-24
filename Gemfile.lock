@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    jekyll-is-hookdown (0.8.0.5)
+    jekyll-is-hookdown (0.8.0.6)
       jekyll (~> 4.4)
       kramdown (~> 2.5)
 
@@ -245,7 +245,7 @@ CHECKSUMS
   is-deep (0.8.0.2) sha256=7a63b6412387852b3489921bc8c38b296e2d326f4b3ac07ce7e6a9a2ba19fd76
   is-module-reset (0.8.0) sha256=50f2f27566b165bc5d08c03623ef67f893fcddb183858003d7f0febd3b5238b4
   jekyll (4.4.1) sha256=4c1144d857a5b2b80d45b8cf5138289579a9f8136aadfa6dd684b31fe2bc18c1
-  jekyll-is-hookdown (0.8.0.5)
+  jekyll-is-hookdown (0.8.0.6)
   jekyll-sass-converter (3.1.0) sha256=83925d84f1d134410c11d0c6643b0093e82e3a3cf127e90757a85294a3862443
   jekyll-watch (2.2.1) sha256=bc44ed43f5e0a552836245a54dbff3ea7421ecc2856707e8a1ee203a8387a7e1
   json (2.21.2) sha256=1f1d3b7cf2b3ba1a69beca0bb6db13d5438b80bff3cd54cdaaa620b9b07c1c6a
