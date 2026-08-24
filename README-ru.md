@@ -1,6 +1,3 @@
-| [en](README.md) | RU |
-|----------|----------|
-
 # jekyll-is-hookdown
 
 [![GitHub License](https://img.shields.io/github/license/jekyll-is/jekyll-is-hookdown)](LICENSE)
