@@ -8,23 +8,15 @@ module JekyllIS::Hookdown
 
   class << self
 
+    # @return [Jekyll::Page or Jekyll::Document]
     def current_page
       Thread::current[:hookdown_current_page]
     end
 
-    # def current_page= value
-    #   Thread::current[:hookdown_current_page] = value
-    # end
-
+    # @param [Jekyll::Site, nil] site
     def enabled? site = nil
       @site ||= site
       @enabled ||= setup
-    end
-
-    # @api private
-    def reset!
-      @site = nil
-      @enabled = nil
     end
 
     private

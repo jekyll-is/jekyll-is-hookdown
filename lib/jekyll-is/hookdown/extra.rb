@@ -9,6 +9,14 @@ module JekyllIS::Hookdown
 
   class << self
 
+    # @param [Symbol, Array<Symbol>] owner
+    # @param [Array<Symbol>] elements
+    # @param [Integer, Symbol] priority
+    # @return [Proc, nil]
+    # @yield Hook block
+    # @yieldparam [Jekyll::Page, Jekyll::Document] page
+    # @yieldparam [Kramdown::Element] element
+    # @yieldreturn [nil, Kramdown::Element, :delete]
     def register_element_hook owner, *elements, priority: Jekyll::Hooks::DEFAULT_PRIORITY, &block
       if enabled?
         priority = Jekyll::Hooks::priority_value(priority)
@@ -23,14 +31,17 @@ module JekyllIS::Hookdown
         end
         block
       else
-        false
+        nil
       end
     end
 
+    # @param [Proc] block
+    # @return [void]
     def unregister_element_hook block
       if @hooks
         @hooks.reject! { it[:block] == block }
       end
+      nil
     end
 
     private

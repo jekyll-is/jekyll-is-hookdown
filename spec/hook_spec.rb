@@ -5,8 +5,6 @@ require_relative 'spec_helper'
 RSpec::describe Jekyll::Converters::Markdown::Hookdown do
 
   it 'Main hook is triggered' do
-    # Jekyll.sites.clear
-    # JekyllIS::Hookdown::reset!
     IS::ModuleReset::isolate JekyllIS::Hookdown, Jekyll do
       config = Jekyll::configuration({
         'source' => nil,
@@ -38,14 +36,10 @@ RSpec::describe Jekyll::Converters::Markdown::Hookdown do
       site.render
       expect(page_triggered).to eq(true)
       expect(post_triggered).to eq(true)
-      # site.reset
     end
-    # check = false
   end
 
   it 'Special hook is triggered' do
-    # Jekyll.sites.clear
-    JekyllIS::Hookdown::reset!
     IS::ModuleReset::isolate JekyllIS::Hookdown, Jekyll do
       config = Jekyll::configuration({
         'source' => nil,
@@ -78,7 +72,6 @@ RSpec::describe Jekyll::Converters::Markdown::Hookdown do
       site.render
       expect(page_triggered).to eq(true)
       expect(post_triggered).to eq(true)
-      # site.reset
     end
   end
 

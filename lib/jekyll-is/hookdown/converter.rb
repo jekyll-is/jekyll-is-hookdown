@@ -4,8 +4,11 @@ require 'jekyll'
 
 require_relative 'setup'
 
+# @private
 class Jekyll::Converters::Markdown::Hookdown < Jekyll::Converters::Markdown::KramdownParser
 
+  # @param [String] content
+  # @return [String]
   def convert content
     document = Kramdown::JekyllDocument.new content, @config
     page = JekyllIS::Hookdown::current_page

@@ -13,7 +13,7 @@ Gem::Specification::new do |s|
   s.homepage    =   JekyllIS::Hookdown::Info::HOMEPAGE
   s.license     =   JekyllIS::Hookdown::Info::LICENSE
 
-  s.files = Dir[ 'lib/**/*', 'README.md', 'LICENSE' ]
+  s.files = Dir[ 'lib/**/*', 'README.md', 'README-ru.md', 'LICENSE', 'coverage-badge.svg' ]
 
   s.required_ruby_version = '>= 3.4'
 
@@ -27,5 +27,6 @@ Gem::Specification::new do |s|
   s.add_development_dependency 'yard'
   s.add_development_dependency 'redcarpet'
   s.add_development_dependency 'rdoc'
+  s.add_development_dependency 'yard-markdown-relative-links'
 
 end

@@ -1,6 +1,10 @@
+--plugin markdown-relative-links
 --title "JekyllIS::Hookdown"
 --readme README.md
 --asset coverage-badge.svg
 --protected
 --no-private
 lib/**/*.rb
+-
+README.md
+README-ru.md

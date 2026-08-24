@@ -173,6 +173,8 @@ GEM
     unicode-display_width (2.6.0)
     webrick (1.9.2)
     yard (0.9.45)
+    yard-markdown-relative-links (0.3.0)
+      yard (>= 0.9, < 1)
 
 PLATFORMS
   aarch64-linux-android
@@ -204,6 +206,7 @@ DEPENDENCIES
   rspec (~> 3.13)
   simplecov (~> 1.1)
   yard
+  yard-markdown-relative-links
 
 CHECKSUMS
   addressable (2.9.0) sha256=7fdf6ac3660f7f4e867a0838be3f6cf722ace541dd97767fa42bc6cfa980c7af
@@ -290,6 +293,7 @@ CHECKSUMS
   unicode-display_width (2.6.0) sha256=12279874bba6d5e4d2728cef814b19197dbb10d7a7837a869bab65da943b7f5a
   webrick (1.9.2) sha256=beb4a15fc474defed24a3bda4ffd88a490d517c9e4e6118c3edce59e45864131
   yard (0.9.45) sha256=52e211493f7cb8a3ebf7e104a25a1e73937a3103092545d34cb88fafebb3dc51
+  yard-markdown-relative-links (0.3.0) sha256=44abbc8dae94a9387d4f4a23aac76b553d9d1539690c9da065387c0869cf6507
 
 BUNDLED WITH
   4.0.7
