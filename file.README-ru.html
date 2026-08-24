@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>
-  File: README
+  File: README-ru
   
     &mdash; JekyllIS::Hookdown
   
@@ -15,7 +15,7 @@
   <link rel="stylesheet" href="css/common.css" type="text/css">
 
 <script type="text/javascript">
-  pathId = "README";
+  pathId = "README-ru";
   relpath = '';
 </script>
 
@@ -39,7 +39,7 @@
         <div id="menu">
   
     <a href="_index.html">Index</a> &raquo; 
-    <span class="title">File: README</span>
+    <span class="title">File: README-ru</span>
   
 </div>
 
@@ -62,8 +62,8 @@
       <div id="content"><div id='filecontents'><table>
 <thead>
 <tr>
-<th><strong>EN</strong></th>
-<th><a href="file.README-ru.html" title="ru">ru</a></th>
+<th><a href="index.html" title="en">en</a></th>
+<th>RU</th>
 </tr>
 </thead>
 <tbody>
@@ -74,32 +74,35 @@
 <a href="https://badge.fury.io/rb/jekyll-is-hookdown"><img src="https://badge.fury.io/rb/jekyll-is-hookdown.svg?icon=si%3Arubygems" alt="Gem Version" /></a>
 <a href="https://github.com/jekyll-is/jekyll-is-hookdown/actions/workflows/ruby.yml"><img src="https://github.com/jekyll-is/jekyll-is-hookdown/actions/workflows/ruby.yml/badge.svg" alt="Ruby" /></a>
 <img src="coverage-badge.svg" alt="Coverage" /></p>
-<p>A Jekyll plugin that replaces the default Markdown parser with a custom one — inheriting from the standard Kramdown and extending it with an additional hook for intercepting the internal AST representation.</p>
-<h2 id="Setup">Setup</h2>
-<p>In general, this gem is intended to be used by other plugins and should be listed as a dependency in <em>their</em> gemspecs, not in the site's <code>Gemfile</code>.
-However, Jekyll allows writing plugins in the <code>_plugins</code> subdirectory — to use this hook there, you will need to include the gem as a plugin:</p>
-<p>In <code>Gemfile</code>:</p>
+<p>Плагин для Jekyll, позволяющий подменить markdown-парсер на кастомный — унаследованный от стандартного Kramdown и дополняющий его
+дополнительным хуком для перехвата внутреннего AST-представления.</p>
+<h2 id="___________">Подключение</h2>
+<p>Вообще, гем предназначен для использования другими плагинами и должен быть указан в зависимостях именно в них, а не в <code>Gemfile</code> сайта.
+Однако, в Jekyll есть возможность писать плагины в подкаталоге <code>_plugins</code> — чтобы там использовать данный хук, потребуется подключить
+данный гем именно как плагин:</p>
+<p>В <code>Gemfile</code>:</p>
 <pre class="code ruby"><code class="ruby">group :jekyll_plugins do
     . . .
   gem &#39;jekyll-is-hookdown&#39;, &#39;~&gt; 0.8&#39;
 end
 </code></pre>
-<p>Or, if you are not using Bundler, install the gem manually:</p>
+<p>Или, если вы не используете Bundler, установить гем командой:</p>
 <pre class="code shell"><code class="shell">gem install jekyll-is-hookdown
 </code></pre>
-<p>In <code>_config.yml</code>:</p>
+<p>В <code>_config.yml</code>:</p>
 <pre class="code yaml"><code class="yaml">plugins:
     . . .
   - jekyll-is-hookdown
 
 markdown: Hookdown
 </code></pre>
-<p>The last line activates the plugin. Since the converter inherits from the standard Kramdown parser, all extensions and settings in the <code>kramdown</code> configuration subsection will continue to work (the plugin does not define its own <code>hookdown</code> section), for example:</p>
+<p>Последняя строчка включает работу плагина. При этом, поскольку конвертер унаследован от стандартного Kramdown, будут работать все расширения
+и настройки в подразделе конфигурации <code>kramdown</code> (собственной секции <code>hookdown</code> плагин не предусматривает), например:</p>
 <pre class="code yaml"><code class="yaml">kramdown:
   input: GFM
   hard_wrap: false
 </code></pre>
-<h3 id="Dependencies">Dependencies</h3>
+<h3 id="___________">Зависимости</h3>
 <ul>
 <li>
 <p>Ruby &gt;= 3.4</p>
@@ -111,47 +114,53 @@ markdown: Hookdown
 <p>Kramdown ~&gt; 2.5</p>
 </li>
 </ul>
-<h2 id="Usage">Usage</h2>
-<p>The main hook is injected into the <a href="https://jekyllrb.com/docs/plugins/hooks/">standard Jekyll hook system</a> as the <code>:post_parse</code> event. It is available for <code>:pages</code>, <code>:documents</code>, and <code>:posts</code> (note that <code>:documents</code> <em>includes</em> <code>:posts</code>). The handler receives the page/document object and a <a href="https://kramdown.gettalong.org/rdoc/Kramdown/Document.html"><code>Kramdown::Document</code></a> instance.</p>
+<h2 id="_____________">Использование</h2>
+<p>Основной хук внедрен в <a href="https://jekyllrb.com/docs/plugins/hooks/">общую систему хуков Jekyll</a> как событие <code>:post_parse</code>. Он доступен
+для объектов <code>:pages</code>, <code>:documents</code> и <code>:posts</code> (нужно
+заметить, что <code>:documents</code> <em>включает в себя</em> <code>:posts</code>). В обработчик передается объект документа/страницы и объект
+класса <a href="https://kramdown.gettalong.org/rdoc/Kramdown/Document.html"><code>Kramdown::Document</code></a>.</p>
 <pre class="code ruby"><code class="ruby"><span class='const'>Jekyll</span><span class='op'>::</span><span class='const'>Hooks</span><span class='op'>::</span><span class='id identifier rubyid_register'>register</span> <span class='lbracket'>[</span> <span class='symbol'>:pages</span><span class='comma'>,</span> <span class='symbol'>:documents</span> <span class='rbracket'>]</span><span class='comma'>,</span> <span class='symbol'>:post_parse</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_page'>page</span><span class='comma'>,</span> <span class='id identifier rubyid_document'>document</span><span class='op'>|</span>
-  <span class='comment'># Do something with the document...
+  <span class='comment'># Какие-то действия с документом...
 </span><span class='kw'>end</span>
 </code></pre>
-<p>Since in most cases you want to process specific tags/elements rather than the entire document, an additional hook is provided. It is <em>not</em> mapped to the standard Jekyll hook system and is registered differently. The handler receives the page/document object and a <a href="https://kramdown.gettalong.org/rdoc/Kramdown/Element.html"><code>Kramdown::Element</code></a> instance.</p>
+<p>Поскольку чаще всего нужно обрабатывать не весь документ, а определенные теги/элементы, предусмотрен и другой хук, не приводимый к стандартным,
+он регистрируется иначе. В обработчик передается объект документа/страницы и объект
+класса <a href="https://kramdown.gettalong.org/rdoc/Kramdown/Element.html"><code>Kramdown::Element</code></a>.</p>
 <pre class="code ruby"><code class="ruby"><span class='const'><span class='object_link'><a href="JekyllIS.html" title="JekyllIS (module)">JekyllIS</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="JekyllIS/Hookdown.html" title="JekyllIS::Hookdown (module)">Hookdown</a></span></span><span class='op'>::</span><span class='id identifier rubyid_register_element_hook'><span class='object_link'><a href="JekyllIS/Hookdown.html#register_element_hook-class_method" title="JekyllIS::Hookdown.register_element_hook (method)">register_element_hook</a></span></span> <span class='lbracket'>[</span> <span class='symbol'>:pages</span><span class='comma'>,</span> <span class='symbol'>:documents</span> <span class='rbracket'>]</span><span class='comma'>,</span> <span class='symbol'>:a</span><span class='comma'>,</span> <span class='symbol'>:img</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_page'>page</span><span class='comma'>,</span> <span class='id identifier rubyid_element'>element</span><span class='op'>|</span>
   <span class='kw'>case</span> <span class='id identifier rubyid_element'>element</span><span class='period'>.</span><span class='id identifier rubyid_type'>type</span>
   <span class='kw'>when</span> <span class='symbol'>:a</span>
-    <span class='comment'># Do something here...
+    <span class='comment'># Тут что-то делаем...
 </span>  <span class='kw'>when</span> <span class='symbol'>:img</span>
-    <span class='comment'># And something here...
+    <span class='comment'># И тут что-то делаем...
 </span>  <span class='kw'>end</span>
 <span class='kw'>end</span>
 </code></pre>
-<p>The return value of the handler is significant and interpreted as follows:</p>
+<p>При этом значение, возвращаемое обработчиком, важно и трактуется следующим образом:</p>
 <ul>
 <li>
-<p><code>nil</code> — no additional action is taken.</p>
+<p><code>nil</code> — не приводит к дополнительным действиям.</p>
 </li>
 <li>
-<p><code>Kramdown::Element</code> — replaces the current element in the AST tree.</p>
+<p><code>Kramdown::Element</code> — заменяет текущий элемент в AST-дереве.</p>
 </li>
 <li>
-<p><code>:delete</code> — removes the current element from the AST tree.</p>
+<p><code>:delete</code> — удаляет текущий элемент из AST-дерева.</p>
 </li>
 <li>
-<p>Any other value is treated as an error.</p>
+<p>Прочие значения трактуются как ошибочные.</p>
 </li>
 </ul>
-<p><em>Replacing or deleting the root element (<code>document.root</code>) is not supported.</em></p>
-<h3 id="Recommendation">Recommendation</h3>
-<p>If you are writing your own plugin that uses this hook, it is highly recommended to verify that it is active, i.e. that the corresponding custom converter is selected in the config. You could check the value in <code>_config.yml</code> directly, but it is better to use the dedicated method:</p>
+<p><em>Замена и удаление корневого элемента (<code>document.root</code>) не поддерживается.</em></p>
+<h3 id="____________">Рекомендация</h3>
+<p>Если вы пишете свой плагин с использованием этого хука, крайне желательно убедиться, что он активирован, то есть в конфиге выбран соответствующий
+кастомный конвертер. Можно, конечно, непосредственно проверять значение в <code>_config.yml</code>, но лучше использовать специальный метод:</p>
 <pre class="code ruby"><code class="ruby"><span class='kw'>if</span> <span class='const'><span class='object_link'><a href="JekyllIS.html" title="JekyllIS (module)">JekyllIS</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="JekyllIS/Hookdown.html" title="JekyllIS::Hookdown (module)">Hookdown</a></span></span><span class='op'>::</span><span class='id identifier rubyid_enabled?'><span class='object_link'><a href="JekyllIS/Hookdown.html#enabled%3F-class_method" title="JekyllIS::Hookdown.enabled? (method)">enabled?</a></span></span>
-  <span class='comment'># Register your hooks here...
+  <span class='comment'># Устанавливаем свои хуки здесь...
 </span><span class='kw'>end</span>
 </code></pre>
-<p>This check will work even <em>before</em> the site is initialized.</p>
-<h3 id="Example">Example</h3>
-<p>Add <code>target=&quot;_blank&quot;</code> to all external links:</p>
+<p>Проверка этого условия будет работать даже <em>до</em> инициализации сайта.</p>
+<h3 id="______">Пример</h3>
+<p>Выставим всем внешним ссылкам <code>target=&quot;_blank&quot;</code>:</p>
 <pre class="code ruby"><code class="ruby"><span class='kw'>if</span> <span class='const'><span class='object_link'><a href="JekyllIS.html" title="JekyllIS (module)">JekyllIS</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="JekyllIS/Hookdown.html" title="JekyllIS::Hookdown (module)">Hookdown</a></span></span><span class='op'>::</span><span class='id identifier rubyid_enabled?'><span class='object_link'><a href="JekyllIS/Hookdown.html#enabled%3F-class_method" title="JekyllIS::Hookdown.enabled? (method)">enabled?</a></span></span>
   <span class='const'><span class='object_link'><a href="JekyllIS.html" title="JekyllIS (module)">JekyllIS</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="JekyllIS/Hookdown.html" title="JekyllIS::Hookdown (module)">Hookdown</a></span></span><span class='op'>::</span><span class='id identifier rubyid_register_element_hook'><span class='object_link'><a href="JekyllIS/Hookdown.html#register_element_hook-class_method" title="JekyllIS::Hookdown.register_element_hook (method)">register_element_hook</a></span></span> <span class='lbracket'>[</span> <span class='symbol'>:pages</span><span class='comma'>,</span> <span class='symbol'>:documents</span> <span class='rbracket'>]</span><span class='comma'>,</span> <span class='symbol'>:a</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid__'>_</span><span class='comma'>,</span> <span class='id identifier rubyid_element'>element</span><span class='op'>|</span>
     <span class='id identifier rubyid_href'>href</span> <span class='op'>=</span> <span class='id identifier rubyid_element'>element</span><span class='period'>.</span><span class='id identifier rubyid_attr'>attr</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>href</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span>
@@ -163,11 +172,15 @@ markdown: Hookdown
   <span class='kw'>end</span>
 <span class='kw'>end</span>
 </code></pre>
-<h2 id="License">License</h2>
-<p>The plugin is released under the <strong><a href="https://www.gnu.org/licenses/lgpl-3.0.html">GNU Lesser General Public License v3.0</a></strong>. This means you are free to use it without any restrictions as long as you pull it in as a dependency. If you wish to <em>take the code</em> and incorporate it into your own project, or release a <em>fork</em> of this plugin, the result must also be published under the LGPLv3.</p>
-<h2 id="Status">Status</h2>
-<p>The current version is <strong>0.8.x</strong>. This should be treated as a public alpha release.</p>
-<p>However, due to the deliberately limited scope — the plugin is purely infrastructural and should not do anything extra — it is unlikely that any significant new features will be added. As tests and documentation are refined, it will gradually move to beta (0.9.x) and then to a stable release (1.0) without any substantial code changes.</p></div></div>
+<h2 id="________">Лицензия</h2>
+<p>Плагин опубликован под <strong><a href="https://www.gnu.org/licenses/lgpl-3.0.html">GNU Lesser General Public License v3.0</a></strong>. Это означает, что вы можете свободно
+им пользоваться без каких-то ограничений, пока подтягиваете его по зависимостям. Если же вы захотите <em>взять код</em> и втянуть его в свой проект,
+или выпустить <em>форк</em> данного плагина, результат должен быть опубликован так же под LGPLv3.</p>
+<h2 id="______">Статус</h2>
+<p>Текущая версия — <strong>0.8.x</strong>. Это следует трактовать как публичную альфа-версию.</p>
+<p>Однако, в силу принципиального ограничения функциональности — плагин чисто инфраструктурный и не должен делать ничего лишнего, скорее всего чего-то
+нового в нем уже не появится. Так что по мере доработки автотестов и документации он будет плавно переходить в стадию бета-версии (0.9.x) и затем
+релиза (1.0) без каких-либо сущностных изменений в коде.</p></div></div>
 
       <div id="footer">
   Generated on Mon Aug 24 16:54:01 2026 by
